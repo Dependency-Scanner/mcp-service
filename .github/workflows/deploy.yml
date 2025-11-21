@@ -6,7 +6,7 @@ on:
       - main # Trigger on push/merge to the main branch
 
 env:
-  PROJECT_ID: threat-lens           # ❗ REQUIRED: Replace with your actual Project ID
+  PROJECT_ID: 518719563872           # ❗ REQUIRED: Replace with your actual Project ID
   REGION: asia-south1                       # The region for your Cloud Run service
   ARTIFACT_REGISTRY: remote-mcp-server   # Your Artifact Registry repository name
   SERVICE_NAME: mcp-server
@@ -30,7 +30,7 @@ jobs:
         with:
           # ❗ REQUIRED: Replace with your WIF details
           workload_identity_provider: 'projects/${{ env.PROJECT_ID }}/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
-          service_account: 'your-github-sa@${{ env.PROJECT_ID }}.iam.gserviceaccount.com'
+          service_account: '${{ env.PROJECT_ID }}-compute@developer.gserviceaccount.com'
 
       - name: 📦 Set up Docker for Artifact Registry
         # Authenticate Docker to push to your GCP Artifact Registry
